@@ -101,13 +101,11 @@ function requestAllData(data, successCb, errorCb) {
           successCb(res)
         },
         fail: function (res) {
-          wx.hideLoading()
           util.showTip("网络没有响应", "none")
         },
       })
     } catch (e) {
       console.error(e)
-      wx.hideLoading()
       util.showTip("网络没有响应", "none")
     }
   }
@@ -157,7 +155,6 @@ function requestDelete(data, successCb, errorCb) {
   }
 }
 function requestAdd(data, successCb, errorCb) {
-  console.log(data)
   if (timeLimit.checkAdd(5000)) {
     var db = app.globalData.db
     try {
@@ -186,7 +183,7 @@ function requestAdd(data, successCb, errorCb) {
   }
 }
 function requestRewrite(data, successCb, errorCb) {
-  if (timeLimit.checkRewrite(3000)) {
+  if (timeLimit.checkRewrite(5000)) {
     var db = app.globalData.db
     try {
       db.collection('diarylist').doc(data.id).update({
@@ -195,11 +192,9 @@ function requestRewrite(data, successCb, errorCb) {
           contentstr: data.contentstr,
         },
         success: function (res) {
-          console.log("requestRewrite", res)
           successCb(res)
         },
         fail: function (res) {
-          console.log(res)
           wx.hideLoading()
           util.showTip("网络没有响应", "none")
         },

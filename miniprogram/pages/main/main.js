@@ -65,7 +65,6 @@ Page({
 
   canNavigate: true,//記錄是否可以跳轉到日記詳情頁
 
-  totaldiary:0,
   skip:0,
   pagenum:10,
 
@@ -96,13 +95,8 @@ Page({
       }
       var success = function (res) {
         wx.setStorageSync("total", res.total)
-        that.totaldiary = res.result
       }
       request.requestAllDataNum(data, success)
-    }
-    else
-    {
-      that.totaldiary = totaldiary
     }
   },
   parseData:function(data)
@@ -134,7 +128,7 @@ Page({
     that.setData({
       hasMore: true
     })
-    if (that.skip < wx.getStorageSync("total"))
+    if (that.skip < (wx.getStorageSync("total") || 0))
     {
       var data = {
         skip: that.skip,

@@ -12,7 +12,7 @@
 const cloud = require('wx-server-sdk')
 
 cloud.init()
-const db = cloud.database({ env: 'jellytest' })
+const db = cloud.database({ env: 'jelly' })
 
 exports.main = async (event, context) => {
   var openid = event.userInfo.openId

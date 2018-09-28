@@ -2,7 +2,7 @@
 
 /*个人信息*/
 .summary {
-        background: #9BCF97;
+        background: #FBFBF6;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -20,8 +20,6 @@
  {
    display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
  }
 /*昵称*/
 .summary .doc .nickname {
