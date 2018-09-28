@@ -1,7 +1,6 @@
 const util = require('./util.js')
 const app = getApp();
 function request(name, data, successCb, errorCb) {
-  console.log("请求一次",name)
   wx.cloud.callFunction({
     name: name,
     data: data,

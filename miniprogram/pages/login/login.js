@@ -62,6 +62,7 @@ Page({
     var data = data || {}
     var success = (res) => 
     {
+      console.log("返回值=======",res)
       wx.hideLoading()
       var op = wx.getStorageSync("openid")
       if (op && op != res.result._id)

@@ -16,23 +16,23 @@ const db = cloud.database({ env: 'jellytest' })
 
 exports.main = async (event, context) => {
   var openid = event.userInfo.openId
-  var has = await db.collection('userlist').doc(openid).get()
-  if(has.data.length!=0){
-    return {_id:openid}
-  }
   try {
-    console.log("进来了")
-    return await db.collection('userlist').add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-        _id: event.userInfo.openId,
-        openid: event.userInfo.openId,
-        nickName: event.nickName,
-        avatarUrl: event.avatarUrl,
-        gender: event.gender,
-      }
-    })
+    await db.collection('userlist').doc(openid).get()
+    return { _id: openid}
   } catch (e) {
-    console.error(e)
+    try {
+      return await db.collection('userlist').add({
+        // data 字段表示需新增的 JSON 数据
+        data: {
+          _id: event.userInfo.openId,
+          openid: event.userInfo.openId,
+          nickName: event.nickName,
+          avatarUrl: event.avatarUrl,
+          gender: event.gender,
+        }
+      })
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
