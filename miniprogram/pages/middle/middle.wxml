@@ -1,0 +1,47 @@
+<!--pages/middle/middle.wxml-->
+<import src="../../component/appModal/appModal.wxml"/>
+<template is="modal" data="{{ ..._modal_ }}"/>
+
+<view>
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title'>
+      写日记
+      <image src='../images/back.png' mode='aspectFit' class='back' bindtap='navBack'></image> 
+    </view>
+  </view>
+    <view class='setting' style='top:{{navH}}px;'>
+  <!-- 正文 -->
+      <view>
+          <view class='date'>{{date}}</view>
+          <input class="textinput" id="title" maxlength="18" placeholder="请输入标题" bindinput='settitle' value='{{initTitleValue}}' />
+      
+          <textarea class="textarea" style="height:300rpx" maxlength = "800" placeholder='请输入内容' bindinput="setcontent" value='{{initContentValue}}'/>
+
+    
+
+          <view class="location">
+            <view class="location-select" bindtap="selectLocation">
+              <text>{{location}}</text>
+            </view>
+            <view class="location-switch">
+              <switch checked="{{locationCheck}}" bindchange="switchLocationChange"/>
+            </view>
+          </view>
+
+
+          <view class="weather">
+            <view class="weather-select" bindtap="selectWeather">
+              <text>{{weather}}</text>
+            </view>
+            <view class="weather-switch">
+              <switch checked="{{weatherCheck}}" bindchange="switchWeatherChange"/>
+            </view>
+          </view>
+
+          <view  catchtouchstart="streamRecord" catchtouchend="endStreamRecord">中文</view>
+
+      </view>
+    <view class="senddiary" bindtap='sendButtonTap'>发表日记</view>
+
+  </view>
+</view>

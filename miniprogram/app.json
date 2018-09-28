@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/main/main",
+    "pages/middle/middle",
+    "pages/mine/mine",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "f0f0f5",
+    "navigationBarBackgroundColor": "f0f0f5",
+    "navigationBarTitleText": "直白日记",
+    "navigationBarTextStyle": "black"
+  },
+  "cloud": true
+}

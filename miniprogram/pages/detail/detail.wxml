@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<view>
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title'>
+      预览
+      <image src='../images/back.png' mode='aspectFit' class='back' bindtap='navBack'></image> 
+    </view>
+  </view>
+  <!-- <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y > -->
+    <view class='setting' style='top:{{navH}}px;'>
+
+      <view class="scroll-view">
+          <view class="diary">
+            <view class="diary-title"> {{diary.title}} </view>
+            <view class="diary-line"></view>
+            <view class="diary-location"> {{diary.location}} </view>
+            <view class="diary-location"> {{diary.weather}} </view>
+            <view class="diary-line"> </view>
+            <view class="diary-detail"> {{diary.content}}</view>
+          </view>
+
+          
+          
+          <!-- <image class="toedit" bindtap="toeditdiary" src="/images/edit.png"></image> -->
+          <view class="toedit" bindtap="toeditdiary">编辑</view>
+        </view>
+
+
+</view>
+  <!-- </scroll-view> -->
+</view>
+
+
+<modal hidden="{{modalHidden}}" title="修改日记" confirm-text="确认" cancel-text="取消" bindcancel="oncancel" bindconfirm='onconfirm'>
+  <view class="page__desc">日记标题</view>
+  <input id="title" class="pagetitle" placeholder="请输入标题" maxlength = "18" bindinput='settitle' value='{{diary.title}}' />
+  <view class="page__desc">日记内容</view>
+  <textarea id="detail" class="pagecontent" style="heght:250rpx" fixed="true" adjust-position="false" maxlength = "800" placeholder="请输入内容"  bindinput='setdetail' value='{{diary.content}}' />
+</modal>
+  
+
+  
+  

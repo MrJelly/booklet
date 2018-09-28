@@ -1,0 +1,3 @@
+
+<import src="../../component/appModal/appModal.wxml"/>
+<template is="modal" data="{{ ..._modal_ }}"/>
