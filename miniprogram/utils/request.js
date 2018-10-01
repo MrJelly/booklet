@@ -93,7 +93,7 @@ function requestAllData(data, successCb, errorCb) {
     var db = app.globalData.db
     try {
       db.collection('diarylist').where({
-        openid: app.globalData.openid
+        _openid: app.globalData.openid
       }).skip(data.skip) // 跳过结果集中的前 10 条，从第 11 条开始返回
         .limit(data.pagenum) // 限制返回数量为 10 条
         .get({
@@ -114,7 +114,7 @@ function requestAllDataNum(data, successCb, errorCb) {
   if (timeLimit.checkAlldatanum(5000)) {
     var db = app.globalData.db
     try {
-      db.collection('diarylist').where({ openid: app.globalData.openid }).count({
+      db.collection('diarylist').where({ _openid: app.globalData.openid }).count({
         success: function (res) {
           successCb(res)
         },
@@ -160,7 +160,7 @@ function requestAdd(data, successCb, errorCb) {
     try {
       db.collection('diarylist').add({
         data: {
-          openid: app.globalData.openid,
+          // openid: app.globalData.openid,
           due: data.due,
           location: data.location,
           weather: data.weather,

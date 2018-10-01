@@ -67,9 +67,9 @@ Page({
       if (op && op != res.result._id)
       {
         wx.clearStorageSync()
-        wx.setStorageSync("openid", res.result._id)
-        app.globalData.openid = res.result._id
       }
+      wx.setStorageSync("openid", res.result._id)
+      app.globalData.openid = res.result._id
       wx.reLaunch({ url: "../index/index" })
     }
     request.requestLogin(data, success)
