@@ -1,0 +1,74 @@
+
+<view>
+    <view class="one">
+      <view class="tallytitle">
+        <view id='0' class='outcometitle' style="background-color:{{curSelect==0 ? '#ec6c3f' :'#fcaa67'}}" bindtap='selectTap'>支出</view>
+        <view id='1' class='incometitle' style="background-color:{{curSelect==1 ? '#ec6c3f' :'#fcaa67'}}" bindtap='selectTap'>收入</view>
+      </view>
+    </view>
+
+    <view class='two'>
+      <swiper class="swiper" current='{{swiperindex}}' indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" duration="{{duration}}" circular="{{circular}}" bindchange="bingswipercurrent">
+        <block  wx:for="{{curSelect==0 ? outcomesort :incomesort}}"wx:key="{{idx}}" wx:for-item="sortdata">
+          <swiper-item>
+            <view class="sort">
+              <view class='for' wx:for="{{sortdata}}" wx:key="{{index}}" wx:for-item="sort_data_item">
+                <view id='{{index}}' class="sort_data_item" bindtap='selectWaysTap'>
+                    <span class="icon border-radius iconfont {{sort_data_item.icon}}" style="background-color:{{curSelectSwiper==swiperindex&&curSelectWays==index ? '#fcaa67' :'#f5f5f5'}}"></span>
+                    <view class="text" style="color:{{curSelectSwiper==swiperindex&&curSelectWays==index ? 'black' :'#f5f5f5'}}">{{sort_data_item.text}}</view>
+                </view>
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+<view class="calculate">
+  
+  
+  <view class="displaydata">
+        <view class="selectdata">
+          <text class="selecticon iconfont {{selectdata.icon}}"></text>
+          <text class="selecttext">{{selectdata.text}}</text>
+        </view>
+        <view class="panel-display">{{calc.displayNum || 0}}</view>
+  </view>
+
+  <view class="remark">
+      <view class='textdesc'>备注:</view>
+      <input class="textinput" id="title" maxlength="20" adjust-position="true" placeholder="请填写备注" bindinput='setRemark' value='{{initTitleValue}}' />
+  </view>
+
+
+  <view class="panel-btns">
+      <view class="btns-rows">
+        <view class="btn {{tapped['7']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="7">7</view>
+        <view class="btn {{tapped['8']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="8">8</view>
+        <view class="btn {{tapped['9']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="9">9</view>
+        <picker class = "btn {{tapped['date']}}" mode="date" start="2000-01-01" end="{{maxDate}}" fields="day" bindchange="onDateChange">
+          <view class="txt"bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd" data-op="date">{{date}}</view>
+        </picker>
+      </view>
+      <view class="btns-rows">
+        <view class="btn {{tapped['4']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="4">4</view>
+        <view class="btn {{tapped['5']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="5">5</view>
+        <view class="btn {{tapped['6']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="6">6</view>
+        <view class="btn {{tapped['-']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="-">-</view>
+      </view>
+      <view class="btns-rows">
+        <view class="btn {{tapped['1']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="1">1</view>
+        <view class="btn {{tapped['2']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="2">2</view>
+        <view class="btn {{tapped['3']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="3">3</view>
+        <view class="btn {{tapped['+']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="+">+</view>
+      </view>
+      <view class="btns-rows">
+        <view class="btn {{tapped['.']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op=".">.</view>
+        <view class="btn {{tapped['0']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="0">0</view>
+        <view id="btn-c" class="btn {{tapped['c']}} iconfont1 icon-tuige" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd" data-op="d"></view>
+        <view id="btn-f" class="btn {{tapped['=']}}" bindtap="btnClicked" bindtouchstart="btnTouchStart"  bindtouchend="btnTouchEnd"  data-op="{{calc.complete || complete}}">{{calc.complete || complete}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>

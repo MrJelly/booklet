@@ -1,0 +1,16 @@
+
+var numFixed = (function(num) {
+    if (isNaN(num)) {
+        return (0)
+    };
+    num = parseFloat(num);
+    var num = num.toFixed(2);
+    var numarr = num.split(".");
+    if (numarr.length > 1 && numarr[(1)] == "00") {
+        num = numarr[(0)]
+    };
+    return (num)
+});
+module.exports = ({
+    numFixed: numFixed,
+});

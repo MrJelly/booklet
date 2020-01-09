@@ -1,18 +1,44 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/index/index",
-    "pages/main/main",
-    "pages/middle/middle",
+    "pages/tally/tally",
+    "pages/charts/charts",
+    "pages/addtally/addtally",
     "pages/mine/mine",
-    "pages/detail/detail"
+    "pages/detailtally/detailtally"
   ],
   "window": {
-    "navigationStyle": "custom",
-    "backgroundTextStyle": "f0f0f5",
-    "navigationBarBackgroundColor": "f0f0f5",
-    "navigationBarTitleText": "直白日记",
-    "navigationBarTextStyle": "black"
+    "navigationStyle": "default",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FCAA67",
+    "navigationBarTitleText": "记账小册",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
   },
-  "cloud": true
+  "tabBar": {
+    "selectedColor": "#FCAA67",
+    "normalColor": "#707070",
+    "backgroundColor": "#FFF",
+    "selectedBackgroundColor": "#FCAA67",
+    "list": [
+      {
+        "pagePath": "pages/tally/tally",
+        "iconPath": "pages/images/tally.png",
+        "selectedIconPath": "pages/images/tally_selected.png",
+        "text": "账单"
+      },
+      {
+        "pagePath": "pages/charts/charts",
+        "iconPath": "pages/images/chart.png",
+        "selectedIconPath": "pages/images/chart_selected.png",
+        "text": "图表"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "pages/images/mine.png",
+        "selectedIconPath": "pages/images/mine_selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
 }

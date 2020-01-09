@@ -1,13 +1,17 @@
-const amapFile = require('./amap-wx.js')
-const formatTime = (ishour,date)=> {
-  date = date || new Date();
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-  const week = date.getDay();
+const formatDate = (onlyMonth,year,month,day)=> {
+  if(!year&&!month&&!day)
+  {
+    let date = new Date();
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    return onlyMonth ? [year, month].map(formatNumber).join("-") : [year, month, day].map(formatNumber).join("-")
+  }else{
+    return onlyMonth ? [year, month].map(formatNumber).join("-") : [year, month, day].map(formatNumber).join("-")
+  }
+}
+function getWeekStr(week)
+{
   var str = ''
   if (week == 0) {
     str = "星期日";
@@ -24,14 +28,7 @@ const formatTime = (ishour,date)=> {
   } else if (week == 6) {
     str = "星期六";
   } 
-  if (ishour)
-  {
-    return year + '年' + month + '月' + day + '日' + ' ' + [hour, minute, second].map(formatNumber).join(':') +' / ' + str
-  }else{
-    return year + '年' + month + '月' + day + '日' + ' / ' + str
-  }
-  
-  // return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':') + ' ' + str
+  return str
 }
 
 const formatNumber = n => {
@@ -67,32 +64,6 @@ function showModal(t, c, fun,showCancel) {
     success: fun
   })
 }
-function getWeather(cb)
-{
-  var myAmapFun = new amapFile.AMapWX({ key: 'af75e9dc4e4c13d2451e1f64dddeded1' });
-  myAmapFun.getWeather({
-    success: function (data) {
-      wx.setStorageSync("weather", data)
-      cb(data)
-    },
-    fail: function (info) {
-    }
-  })
-}
-
-function getLocation(cb)
-{
-  var myAmapFun = new amapFile.AMapWX({ key: 'af75e9dc4e4c13d2451e1f64dddeded1' });
-  myAmapFun.getRegeo({
-    success: function (data) {
-      var l = data[0].name + '(' + data[0].desc +')'
-      wx.setStorageSync("location", l)
-      cb(l)
-    },
-    fail: function (info) {
-    }
-  })
-}
 
 function isFunction(obj) {
   return typeof obj === 'function';
@@ -100,12 +71,12 @@ function isFunction(obj) {
 
 
 module.exports = {
-  formatTime: formatTime,
+  formatDate: formatDate,
   px2rpx: px2rpx,
   rpx2px: rpx2px,
   showTip: showTip,
   showModal: showModal,
-  getWeather: getWeather,
-  getLocation: getLocation,
   isFunction: isFunction,
+  formatNumber: formatNumber,
+  getWeekStr: getWeekStr,
 }

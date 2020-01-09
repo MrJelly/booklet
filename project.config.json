@@ -10,7 +10,9 @@
 	},
 	"appid": "wxbb1dcf1e9815ef34",
 	"projectname": "jellyGame",
-	"libVersion": "2.2.5",
+	"libVersion": "2.2.3",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

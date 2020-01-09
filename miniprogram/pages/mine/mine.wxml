@@ -1,29 +1,11 @@
 <!-- 个人信息 -->
 <view>
-  <view class='nav bg-white' style='height:{{navH}}px'>
-    <view class='nav-title'>
-      我的
-      <image src='../images/back.png' mode='aspectFit' class='back' bindtap='navBack'></image> 
-    </view>
-  </view>
-  <!-- <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y > -->
-    <view class='setting' style='top:{{navH}}px;'>
-
-    <!-- 正文 -->
       <view class="summary">
-            <image src="{{icon}}" class="avatar" />
-            <view class="doc">
-              <view class="nickname">{{name}}</view>
-              <view class="rec">每一天都值得回忆</view>
-            </view>
+            <image src="{{icon}}" class="avatar"/>
+            <view class="user">小管家</view>
+            <view class="doc">因天下之力，以生天下之财；取天下之财，以供天下之费。</view>
       </view>
       
-      <button bindtap='clearData'>清理缓存</button>
       <button open-type="share">转发给朋友</button>
       <button open-type="feedback">反馈</button>
-      
-
-
-</view>
-  <!-- </scroll-view> -->
 </view>
